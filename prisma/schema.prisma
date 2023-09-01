@@ -11,25 +11,25 @@ datasource db {
 }
 
 model User {
-  id              String            @id @default(uuid())
-  name            String
-  email           String
-  password        String
-  role            String
-  contactNo       String
-  address         String
-  profileImg      String
-  ReviewAndRating ReviewAndRating[]
-  Order           Order[]
-  OrderedBooks    OrderedBooks[]
+  id               String            @id @default(uuid())
+  name             String
+  email            String
+  password         String
+  role             String
+  contactNo        String
+  address          String
+  profileImg       String
+  reviewAndRatings ReviewAndRating[]
+  orders           Order[]
+  orderedBooks     OrderedBooks[]
 
   @@map("user")
 }
 
 model Category {
-  id   String @id @default(uuid())
-  name String
-  Book Book[]
+  id    String @id @default(uuid())
+  name  String
+  books Book[]
 
   @@map("category")
 }
@@ -43,7 +43,7 @@ model Book {
   publicationDate String
   categoryId      String
   category        Category       @relation(fields: [categoryId], references: [id])
-  OrderedBooks    OrderedBooks[]
+  orderedBooks    OrderedBooks[]
 
   @@map("book")
 }
