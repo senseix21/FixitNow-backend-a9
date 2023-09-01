@@ -11,14 +11,17 @@ datasource db {
 }
 
 model User {
-  id         String @id @default(uuid())
-  name       String
-  email      String
-  password   String
-  role       String
-  contactNo  String
-  address    String
-  profileImg String
+  id              String            @id @default(uuid())
+  name            String
+  email           String
+  password        String
+  role            String
+  contactNo       String
+  address         String
+  profileImg      String
+  ReviewAndRating ReviewAndRating[]
+  Order           Order[]
+  OrderedBooks    OrderedBooks[]
 
   @@map("user")
 }
@@ -26,18 +29,21 @@ model User {
 model Category {
   id   String @id @default(uuid())
   name String
+  Book Book[]
 
   @@map("category")
 }
 
 model Book {
-  id              String @id @default(uuid())
+  id              String         @id @default(uuid())
   title           String
   author          String
   price           String
   genre           String
   publicationDate String
   categoryId      String
+  category        Category       @relation(fields: [categoryId], references: [id])
+  OrderedBooks    OrderedBooks[]
 
   @@map("book")
 }
@@ -47,6 +53,7 @@ model ReviewAndRating {
   review String
   rating String
   userId String
+  user   User   @relation(fields: [userId], references: [id])
   bookId String
 
   @@map("review_and_rating")
@@ -55,6 +62,7 @@ model ReviewAndRating {
 model Order {
   id           String @id @default(uuid())
   userId       String
+  user         User   @relation(fields: [userId], references: [id])
   orderedBooks String
   status       String
   createdAt    String
@@ -65,7 +73,9 @@ model Order {
 model OrderedBooks {
   id       String @id @default(uuid())
   userId   String
+  user     User   @relation(fields: [userId], references: [id])
   bookId   String
+  books    Book   @relation(fields: [bookId], references: [id])
   quantity String
 
   @@map("ordered_books")
