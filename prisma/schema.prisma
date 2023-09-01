@@ -9,3 +9,64 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id         String @id @default(uuid())
+  name       String
+  email      String
+  password   String
+  role       String
+  contactNo  String
+  address    String
+  profileImg String
+
+  @@map("user")
+}
+
+model Category {
+  id   String @id @default(uuid())
+  name String
+
+  @@map("category")
+}
+
+model Book {
+  id              String @id @default(uuid())
+  title           String
+  author          String
+  price           String
+  genre           String
+  publicationDate String
+  categoryId      String
+
+  @@map("book")
+}
+
+model ReviewAndRating {
+  id     String @id @default(uuid())
+  review String
+  rating String
+  userId String
+  bookId String
+
+  @@map("review_and_rating")
+}
+
+model Order {
+  id           String @id @default(uuid())
+  userId       String
+  orderedBooks String
+  status       String
+  createdAt    String
+
+  @@map("order")
+}
+
+model OrderedBooks {
+  id       String @id @default(uuid())
+  userId   String
+  bookId   String
+  quantity String
+
+  @@map("ordered_books")
+}
