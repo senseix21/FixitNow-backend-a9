@@ -15,7 +15,7 @@ model User {
   name             String
   email            String
   password         String
-  role             String
+  role             Role              @default(CUSTOMER)
   contactNo        String
   address          String
   profileImg       String
@@ -79,4 +79,9 @@ model OrderedBooks {
   quantity String
 
   @@map("ordered_books")
+}
+
+enum Role {
+  ADMIN
+  CUSTOMER
 }

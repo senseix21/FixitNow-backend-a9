@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\senseiX\\Dev\\Assignments\\Book-catalog-postgres-prisma-a8\\logs\\winston\\successes\\.f549c21fea012c8ce7fc5d3e0769ddc067200909-audit.json",
+    "files": [
+        {
+            "date": 1693646532581,
+            "name": "C:\\Users\\senseiX\\Dev\\Assignments\\Book-catalog-postgres-prisma-a8\\logs\\winston\\successes\\phu-2023-02-09-10-success.log",
+            "hash": "3f68c501aa64a7e3fb838c5a3016ec3dc933aafaeac8539cfa526832093bb4a5"
+        }
+    ],
+    "hashType": "sha256"
+}
