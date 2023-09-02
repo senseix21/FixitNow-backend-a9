@@ -21,7 +21,6 @@ const login = async (payload: ILoginUser): Promise<ILoginResponse> => {
             email: email,
         }
     });
-    console.log(isUserExist);
     if (!isUserExist) {
         throw new ApiError(httpStatus.UNAUTHORIZED, "User does not exist");
     }
