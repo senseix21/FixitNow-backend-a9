@@ -1,61 +1,67 @@
 import httpStatus from "http-status";
 import catchAsync from "../../../shared/catchAsync";
 import sendResponse from "../../../shared/sendResponse";
-import { CategoryService } from "./categories.service";
+import { BookService } from "./book.service";
+import pick from "../../../shared/pick";
+import { bookFilterableFields } from "./book.constants";
 
 
 const create = catchAsync(async (req, res) => {
-    const result = await CategoryService.create(req.body);
+    const result = await BookService.create(req.body);
 
     sendResponse(res, {
         success: true,
         statusCode: httpStatus.OK,
-        message: "Category created successfully!",
+        message: "Book created successfully!",
         data: result
     })
 })
 const getAll = catchAsync(async (req, res) => {
-    const result = await CategoryService.getAll();
+    const filters = pick(req.query, bookFilterableFields)
+    const options = pick(req.query, ['size', 'page', 'sortBy', 'sortOrder']);
+
+    const result = await BookService.getAll(filters, options);
 
     sendResponse(res, {
         success: true,
         statusCode: httpStatus.OK,
         message: "Categories retrieved successfully!",
-        data: result
+        meta: result.meta,
+        data: result.data
     })
 });
 
 const getSingle = catchAsync(async (req, res) => {
-    const result = await CategoryService.getSingle(req.params.id);
+    const result = await BookService.getSingle(req.params.id);
 
     sendResponse(res, {
         success: true,
         statusCode: httpStatus.OK,
-        message: "Category retrieved successfully!",
+        message: "Book retrieved successfully!",
         data: result
     })
 });
 
 
 const update = catchAsync(async (req, res) => {
-    const result = await CategoryService.update(req.params.id, req.body);
+    const result = await BookService.update(req.params.id, req.body);
 
     sendResponse(res, {
         success: true,
         statusCode: httpStatus.OK,
-        message: "Category updated successfully!",
+        message: "Book updated successfully!",
         data: result
     })
 });
 
 
 const deleteOne = catchAsync(async (req, res) => {
-    const result = await CategoryService.deleteOne(req.params.id);
+    const result = await BookService.deleteOne(req.params.id);
 
     sendResponse(res, {
         success: true,
         statusCode: httpStatus.OK,
-        message: "Category deleted successfully!",
+        message: "Book deleted successfully!",
         data: result
     })
 });
@@ -63,7 +69,7 @@ const deleteOne = catchAsync(async (req, res) => {
 
 
 
-export const CategoryController = {
+export const BookController = {
     create,
     getAll,
     getSingle,

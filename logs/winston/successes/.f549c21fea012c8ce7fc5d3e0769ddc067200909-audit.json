@@ -34,6 +34,26 @@
             "date": 1693666919991,
             "name": "C:\\Users\\senseiX\\Dev\\Assignments\\Book-catalog-postgres-prisma-a8\\logs\\winston\\successes\\phu-2023-02-09-16-success.log",
             "hash": "8ce3abe07efd20e39fda3ad874bf1f71a68510db8da6df9cda44fa2bf87b71bb"
+        },
+        {
+            "date": 1693686135831,
+            "name": "C:\\Users\\senseiX\\Dev\\Assignments\\Book-catalog-postgres-prisma-a8\\logs\\winston\\successes\\phu-2023-02-09-21-success.log",
+            "hash": "74c34c5c4ec7babdc0c00e7a4e74c0d18f1c08c2e8ae40afd7c7b965d8c6a35c"
+        },
+        {
+            "date": 1693688814796,
+            "name": "C:\\Users\\senseiX\\Dev\\Assignments\\Book-catalog-postgres-prisma-a8\\logs\\winston\\successes\\phu-2023-02-09-22-success.log",
+            "hash": "0e324135e1efa68fff381b98336cca512c9a8d05e1528329ac4c08ff6236ea3f"
+        },
+        {
+            "date": 1693692122776,
+            "name": "C:\\Users\\senseiX\\Dev\\Assignments\\Book-catalog-postgres-prisma-a8\\logs\\winston\\successes\\phu-2023-02-09-23-success.log",
+            "hash": "a800663a2cf615e58be06ab790da0b2ea15e3faeac20af0b568b11f23970e498"
+        },
+        {
+            "date": 1693696429694,
+            "name": "C:\\Users\\senseiX\\Dev\\Assignments\\Book-catalog-postgres-prisma-a8\\logs\\winston\\successes\\phu-2023-03-09-00-success.log",
+            "hash": "bf24fdf7c02b62475a73217f20116b5c6cb917f6a589aa4e0f30b26f5b09e5a8"
         }
     ],
     "hashType": "sha256"

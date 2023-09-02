@@ -34,6 +34,26 @@
             "date": 1693666919997,
             "name": "C:\\Users\\senseiX\\Dev\\Assignments\\Book-catalog-postgres-prisma-a8\\logs\\winston\\errors\\phu-2023-02-09-16-error.log",
             "hash": "723c76ded87f7a8cf136961892afc14f3180ba22a5494212c27c64b5f645b241"
+        },
+        {
+            "date": 1693686135841,
+            "name": "C:\\Users\\senseiX\\Dev\\Assignments\\Book-catalog-postgres-prisma-a8\\logs\\winston\\errors\\phu-2023-02-09-21-error.log",
+            "hash": "beadaeac987cb2e76e5f18369e828ad7ec27ff8f6e7fc50c42a24cba7d43392c"
+        },
+        {
+            "date": 1693688814805,
+            "name": "C:\\Users\\senseiX\\Dev\\Assignments\\Book-catalog-postgres-prisma-a8\\logs\\winston\\errors\\phu-2023-02-09-22-error.log",
+            "hash": "4564c489a42fdd9483d47d176a4cc04ab86f667695d779b48f842b9f2eec9636"
+        },
+        {
+            "date": 1693692122785,
+            "name": "C:\\Users\\senseiX\\Dev\\Assignments\\Book-catalog-postgres-prisma-a8\\logs\\winston\\errors\\phu-2023-02-09-23-error.log",
+            "hash": "7da8656dd741655cebc41c7cd7793873441f35d7d68991fe4a5218b6fe5bef5b"
+        },
+        {
+            "date": 1693696429708,
+            "name": "C:\\Users\\senseiX\\Dev\\Assignments\\Book-catalog-postgres-prisma-a8\\logs\\winston\\errors\\phu-2023-03-09-00-error.log",
+            "hash": "983f5e23219fdd0b7dc5f1af4eaad266df2cf76d5fdd93dd01619b9bcb5c02c2"
         }
     ],
     "hashType": "sha256"
