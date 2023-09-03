@@ -35,7 +35,7 @@ const logger = createLogger({
     ],
 });
 
-const errorlogger = createLogger({
+const errorLogger = createLogger({
     level: 'error',
     format: combine(label({ label: 'meow mewo!' }), timestamp(), myFormat),
     transports: [
@@ -56,4 +56,4 @@ const errorlogger = createLogger({
     ],
 });
 
-export { logger, errorlogger };
+export { logger, errorLogger };
