@@ -8,23 +8,21 @@ The Book Catalog Application is built using the following technologies:
 
 
 Backend:
-
 Node.js
 Express.js (API Framework)
 Prisma (Database ORM)
 PostgreSQL (Database)
 JSON Web Tokens (Authentication)
 Bcrypt (Password Hashing)
+
 Deployment and Hosting:
-
-Vercel (Frontend Deployment)
 PostgreSQL (Database Hosting)
+
 Version Control:
-
 Git & GitHub
-Development Tools:
 
-Visual Studio Code
+Development Tools:
+Visual Studio Code,
 Postman (API Testing)
 
 ## **User**
