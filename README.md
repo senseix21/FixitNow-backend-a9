@@ -25,6 +25,7 @@ Development Tools:
 Visual Studio Code,
 Postman (API Testing)
 
+# Application Routes
 ## **User**
 - POST: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/auth/signup](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/auth/signup)
 - GET: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users)
