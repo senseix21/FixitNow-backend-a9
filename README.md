@@ -57,4 +57,3 @@ Postman (API Testing)
 ## **Profile**
 - GET: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/profile](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/profile)
 
-Please replace these links with your actual live deployment links in your readme for users to access your application.
