@@ -7,7 +7,7 @@ import { CategoryValidation } from './categories.validation';
 
 const router = express.Router();
 
-router.post('/',
+router.post('/create-category',
     authenticate(ENUM_USER_ROLE.ADMIN),
     validateRequest(CategoryValidation.createCategoryZodSchema),
     CategoryController.create

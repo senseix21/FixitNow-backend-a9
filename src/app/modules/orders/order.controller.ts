@@ -27,9 +27,14 @@ const create = catchAsync(async (req, res) => {
 
 
 const getAll = catchAsync(async (req, res) => {
-    const options = pick(req.query, ['size', 'page', 'sortBy', 'sortOrder']);
 
-    const result = await OrderService.getAll(options);
+    const options = pick(req.query, ['size', 'page', 'sortBy', 'sortOrder']);
+    const accessToken: any = req.headers.authorization;
+    const decodedToken = jwtHelpers.verifyToken(accessToken, config.jwt.secret as Secret);
+    const role = decodedToken.role;
+    const id = decodedToken.userId;
+
+    const result = await OrderService.getAll(options, role, id);
 
     sendResponse(res, {
         success: true,
@@ -43,7 +48,13 @@ const getAll = catchAsync(async (req, res) => {
 
 
 const getSingle = catchAsync(async (req, res) => {
-    const result = await OrderService.getSingle(req.params.id);
+    const accessToken: any = req.headers.authorization;
+    const decodedToken = jwtHelpers.verifyToken(accessToken, config.jwt.secret as Secret);
+    const role = decodedToken.role;
+    const user = decodedToken.userId;
+    const id = req.params.id;
+
+    const result = await OrderService.getSingle(user, role, id);
 
     sendResponse(res, {
         success: true,

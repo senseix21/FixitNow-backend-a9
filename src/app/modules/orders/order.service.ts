@@ -4,6 +4,7 @@ import { IPaginationOptions } from "../../../interfaces/pagination";
 import { IGenericResponse } from "../../../interfaces/common";
 import { paginationHelpers } from "../../../helpers/paginationHelpers";
 import { orderedBooks } from "./order.interface";
+import { ENUM_USER_ROLE } from "../../../enums/user";
 
 const create = async (orderedBooks: orderedBooks[], userId: string): Promise<Order> => {
     const result = await prisma.order.create({
@@ -16,14 +17,26 @@ const create = async (orderedBooks: orderedBooks[], userId: string): Promise<Ord
     return result;
 }
 
-const getAll = async (options: IPaginationOptions): Promise<IGenericResponse<Order[]>> => {
+const getAll = async (
+    options: IPaginationOptions,
+    role: string,
+    id: string): Promise<IGenericResponse<Order[]>> => {
     const { page, size, skip } = paginationHelpers.calculatePagination(options);
+
+    const andConditions = [];
+    if (role === ENUM_USER_ROLE.CUSTOMER) {
+        andConditions.push({
+            userId: id
+        })
+    }
+
+    const whereConditions = andConditions.length > 0 ? { AND: andConditions } : {};
 
 
     const result = await prisma.order.findMany({
         skip,
         take: size,
-
+        where: whereConditions,
         orderBy: options.sortBy && options.sortOrder
             ? {
                 [options.sortBy]: options.sortOrder
@@ -32,9 +45,9 @@ const getAll = async (options: IPaginationOptions): Promise<IGenericResponse<Ord
                 id: 'desc'
             }
 
-    })
+    });
 
-    const total = await prisma.order.count({});
+    const total = await prisma.order.count({ where: whereConditions });
 
     return {
         meta: {
@@ -49,11 +62,22 @@ const getAll = async (options: IPaginationOptions): Promise<IGenericResponse<Ord
 
 
 
-const getSingle = async (id: string): Promise<Order | null> => {
-    const result = await prisma.order.findUnique({
-        where: {
+const getSingle = async (user: string, role: string, id: string): Promise<Order | null> => {
+
+    const andConditions = [];
+    if (role === ENUM_USER_ROLE.CUSTOMER) {
+        andConditions.push({
+            userId: user,
             id: id
-        },
+        })
+    }
+
+    const whereConditions = andConditions.length > 0 ? { AND: andConditions } : {
+        id: id,
+    };
+
+    const result = await prisma.order.findFirst({
+        where: whereConditions
 
     });
 

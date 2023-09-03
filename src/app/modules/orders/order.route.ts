@@ -6,19 +6,18 @@ import { OrderController } from './order.controller';
 
 const router = express.Router();
 
-router.post('/',
+router.post('/create-order',
     authenticate(ENUM_USER_ROLE.CUSTOMER),
     OrderController.create
 );
 
 router.get('/',
+    authenticate(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.CUSTOMER),
     OrderController.getAll);
 
 router.get('/:id',
+    authenticate(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.CUSTOMER),
     OrderController.getSingle);
 
-router.delete('/:id',
-    authenticate(ENUM_USER_ROLE.ADMIN),
-    OrderController.deleteOne);
 
 export const OrderRoutes = router;

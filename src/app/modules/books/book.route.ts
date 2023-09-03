@@ -7,7 +7,7 @@ import { BookValidation } from './book.validation';
 
 const router = express.Router();
 
-router.post('/',
+router.post('/create-book',
     authenticate(ENUM_USER_ROLE.ADMIN),
     validateRequest(BookValidation.createBookZodSchema),
     BookController.create
