@@ -3,6 +3,30 @@ The Book Catalog Application is a web-based platform that allows users to explor
 
 ## Live link : [https://book-catalog-postgres-prisma-a8.vercel.app/](https://book-catalog-postgres-prisma-a8.vercel.app/)
 
+## Tech Stack 
+The Book Catalog Application is built using the following technologies:
+
+
+Backend:
+
+Node.js
+Express.js (API Framework)
+Prisma (Database ORM)
+PostgreSQL (Database)
+JSON Web Tokens (Authentication)
+Bcrypt (Password Hashing)
+Deployment and Hosting:
+
+Vercel (Frontend Deployment)
+PostgreSQL (Database Hosting)
+Version Control:
+
+Git & GitHub
+Development Tools:
+
+Visual Studio Code
+Postman (API Testing)
+
 ## **User**
 - POST: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/auth/signup](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/auth/signup)
 - GET: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users)
