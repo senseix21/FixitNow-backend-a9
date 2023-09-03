@@ -5,6 +5,7 @@ import { IGenericResponse } from "../../../interfaces/common";
 import { paginationHelpers } from "../../../helpers/paginationHelpers";
 import { bookSearchableFields } from "./book.constants";
 
+
 const create = async (payload: Book): Promise<Book> => {
     const result = await prisma.book.create({
         data: payload
