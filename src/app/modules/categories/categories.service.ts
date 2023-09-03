@@ -11,10 +11,12 @@ const create = async (payload: Category): Promise<Category> => {
 
 const getAll = async (): Promise<Category[]> => {
     const result = await prisma.category.findMany({
-
         orderBy: {
             name: "asc"
         },
+        include: {
+            books: true,
+        }
 
     })
 
@@ -26,6 +28,9 @@ const getSingle = async (id: string): Promise<Category | null> => {
         where: {
             id: id
         },
+        include: {
+            books: true
+        }
 
     });
 

@@ -21,7 +21,6 @@ model User {
   profileImg       String
   reviewAndRatings ReviewAndRating[]
   orders           Order[]
-  orderedBooks     OrderedBooks[]
 
   @@map("user")
 }
@@ -35,15 +34,15 @@ model Category {
 }
 
 model Book {
-  id              String         @id @default(uuid())
+  id              String            @id @default(uuid())
   title           String
   author          String
   price           String
   genre           String
   publicationDate String
   categoryId      String
-  category        Category       @relation(fields: [categoryId], references: [id])
-  orderedBooks    OrderedBooks[]
+  category        Category          @relation(fields: [categoryId], references: [id])
+  ReviewAndRating ReviewAndRating[]
 
   @@map("book")
 }
@@ -55,33 +54,29 @@ model ReviewAndRating {
   userId String
   user   User   @relation(fields: [userId], references: [id])
   bookId String
+  book   Book   @relation(fields: [bookId], references: [id])
 
   @@map("review_and_rating")
 }
 
 model Order {
-  id           String @id @default(uuid())
+  id           String   @id @default(uuid())
   userId       String
-  user         User   @relation(fields: [userId], references: [id])
-  orderedBooks String
-  status       String
-  createdAt    String
+  user         User     @relation(fields: [userId], references: [id])
+  status       Status   @default(pending)
+  orderedBooks Json
+  createdAt    DateTime @default(now())
 
   @@map("order")
-}
-
-model OrderedBooks {
-  id       String @id @default(uuid())
-  userId   String
-  user     User   @relation(fields: [userId], references: [id])
-  bookId   String
-  books    Book   @relation(fields: [bookId], references: [id])
-  quantity String
-
-  @@map("ordered_books")
 }
 
 enum Role {
   admin
   customer
+}
+
+enum Status {
+  pending
+  shipped
+  delivered
 }

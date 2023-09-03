@@ -16,6 +16,12 @@ router.post('/',
 router.get('/',
     BookController.getAll);
 
+router.get('/:categoryId/category',
+    BookController.getByCategory);
+
+router.get('/',
+    BookController.getAll);
+
 router.get('/:id',
     BookController.getSingle);
 

@@ -82,6 +82,40 @@ const getAll = async (filters: any, options: IPaginationOptions): Promise<IGener
     };
 }
 
+const getByCategory = async (id: string, options: IPaginationOptions): Promise<IGenericResponse<Book[]>> => {
+    const { page, size, skip } = paginationHelpers.calculatePagination(options);
+
+    const result = await prisma.book.findMany({
+        skip,
+        take: size,
+        where: ({
+            categoryId: {
+                equals: id
+            },
+
+        })
+    });
+
+    const total = await prisma.book.count({
+        where: ({
+            categoryId: {
+                equals: id
+            },
+
+        })
+    })
+
+    return {
+        meta: {
+            page: page,
+            size: size,
+            total: total,
+            totalPage: Math.floor(total / size + 1)
+        },
+        data: result
+    }
+}
+
 const getSingle = async (id: string): Promise<Book | null> => {
     const result = await prisma.book.findUnique({
         where: {
@@ -117,6 +151,7 @@ export const BookService = {
     create,
     getAll,
     getSingle,
+    getByCategory,
     update,
     deleteOne
 }
