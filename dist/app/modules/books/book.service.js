@@ -21,24 +21,27 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BookService = void 0;
-const prisma_1 = require("../../../shared/prisma");
 const paginationHelpers_1 = require("../../../helpers/paginationHelpers");
+const prisma_1 = require("../../../shared/prisma");
 const book_constants_1 = require("./book.constants");
 const create = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield prisma_1.prisma.book.create({
-        data: payload
+        data: payload,
+        include: {
+            category: true
+        }
     });
     return result;
 });
 const getAll = (filters, options) => __awaiter(void 0, void 0, void 0, function* () {
     const { page, size, skip } = paginationHelpers_1.paginationHelpers.calculatePagination(options);
-    const { searchTerm, maxPrice, minPrice } = filters, filtersData = __rest(filters, ["searchTerm", "maxPrice", "minPrice"]);
+    const { search, maxPrice, minPrice } = filters, filtersData = __rest(filters, ["search", "maxPrice", "minPrice"]);
     const andConditions = [];
-    if (searchTerm) {
+    if (search) {
         andConditions.push({
             OR: book_constants_1.bookSearchableFields.map((field) => ({
                 [field]: {
-                    contains: searchTerm,
+                    contains: search,
                     mode: 'insensitive'
                 }
             }))
@@ -66,6 +69,9 @@ const getAll = (filters, options) => __awaiter(void 0, void 0, void 0, function*
         skip,
         take: size,
         where: whereConditions,
+        include: {
+            category: true
+        },
         orderBy: options.sortBy && options.sortOrder
             ? {
                 [options.sortBy]: options.sortOrder

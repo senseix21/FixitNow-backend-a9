@@ -14,12 +14,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderController = void 0;
 const http_status_1 = __importDefault(require("http-status"));
-const catchAsync_1 = __importDefault(require("../../../shared/catchAsync"));
-const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
-const pick_1 = __importDefault(require("../../../shared/pick"));
-const order_service_1 = require("./order.service");
-const jwthelpers_1 = require("../../../helpers/jwthelpers");
 const config_1 = __importDefault(require("../../../config"));
+const jwthelpers_1 = require("../../../helpers/jwthelpers");
+const catchAsync_1 = __importDefault(require("../../../shared/catchAsync"));
+const pick_1 = __importDefault(require("../../../shared/pick"));
+const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
+const order_service_1 = require("./order.service");
 const create = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const accessToken = req.headers.authorization;
     const decodedToken = jwthelpers_1.jwtHelpers.verifyToken(accessToken, config_1.default.jwt.secret);
@@ -43,7 +43,7 @@ const getAll = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0,
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_1.default.OK,
-        message: "Orders retrieved successfully!",
+        message: "Orders retrieved successfully",
         meta: result.meta,
         data: result.data
     });
@@ -58,7 +58,7 @@ const getSingle = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void
     (0, sendResponse_1.default)(res, {
         success: true,
         statusCode: http_status_1.default.OK,
-        message: "Order retrieved successfully!",
+        message: "Order fetched successfully",
         data: result
     });
 }));
