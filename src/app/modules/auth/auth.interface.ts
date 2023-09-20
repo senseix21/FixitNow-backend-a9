@@ -5,10 +5,7 @@ export type ILoginUser = {
 }
 
 export type ILoginResponse = {
-    userName: string;
-    email: string;
-    accessToken: string;
-    refreshToken?: string;
+    token: string;
 }
 
 export type IRefreshTokenResponse = {

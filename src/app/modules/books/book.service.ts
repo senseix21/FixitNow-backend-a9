@@ -1,14 +1,17 @@
 import { Book } from "@prisma/client";
-import { prisma } from "../../../shared/prisma"
-import { IPaginationOptions } from "../../../interfaces/pagination";
-import { IGenericResponse } from "../../../interfaces/common";
 import { paginationHelpers } from "../../../helpers/paginationHelpers";
+import { IGenericResponse } from "../../../interfaces/common";
+import { IPaginationOptions } from "../../../interfaces/pagination";
+import { prisma } from "../../../shared/prisma";
 import { bookSearchableFields } from "./book.constants";
 
 
 const create = async (payload: Book): Promise<Book> => {
     const result = await prisma.book.create({
-        data: payload
+        data: payload,
+        include: {
+            category: true
+        }
     });
 
     return result;
@@ -16,15 +19,15 @@ const create = async (payload: Book): Promise<Book> => {
 
 const getAll = async (filters: any, options: IPaginationOptions): Promise<IGenericResponse<Book[]>> => {
     const { page, size, skip } = paginationHelpers.calculatePagination(options);
-    const { searchTerm, maxPrice, minPrice, ...filtersData } = filters;
+    const { search, maxPrice, minPrice, ...filtersData } = filters;
     const andConditions = [];
 
 
-    if (searchTerm) {
+    if (search) {
         andConditions.push({
             OR: bookSearchableFields.map((field) => ({
                 [field]: {
-                    contains: searchTerm,
+                    contains: search,
                     mode: 'insensitive'
                 }
             }))
@@ -58,8 +61,9 @@ const getAll = async (filters: any, options: IPaginationOptions): Promise<IGener
         skip,
         take: size,
         where: whereConditions,
-
-
+        include: {
+            category: true
+        },
         orderBy: options.sortBy && options.sortOrder
             ? {
                 [options.sortBy]: options.sortOrder

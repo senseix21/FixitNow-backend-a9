@@ -1,11 +1,11 @@
 import httpStatus from "http-status";
-import catchAsync from "../../../shared/catchAsync";
-import sendResponse from "../../../shared/sendResponse";
-import pick from "../../../shared/pick";
-import { OrderService } from "./order.service";
-import { jwtHelpers } from "../../../helpers/jwthelpers";
-import config from "../../../config";
 import { Secret } from "jsonwebtoken";
+import config from "../../../config";
+import { jwtHelpers } from "../../../helpers/jwthelpers";
+import catchAsync from "../../../shared/catchAsync";
+import pick from "../../../shared/pick";
+import sendResponse from "../../../shared/sendResponse";
+import { OrderService } from "./order.service";
 
 
 const create = catchAsync(async (req, res) => {
@@ -39,7 +39,7 @@ const getAll = catchAsync(async (req, res) => {
     sendResponse(res, {
         success: true,
         statusCode: httpStatus.OK,
-        message: "Orders retrieved successfully!",
+        message: "Orders retrieved successfully",
         meta: result.meta,
         data: result.data
     })
@@ -59,7 +59,7 @@ const getSingle = catchAsync(async (req, res) => {
     sendResponse(res, {
         success: true,
         statusCode: httpStatus.OK,
-        message: "Order retrieved successfully!",
+        message: "Order fetched successfully",
         data: result
     })
 });
