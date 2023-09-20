@@ -1,88 +1,58 @@
-# Backend Boilerplate - Postgres & Prisma
+# Book Catalog Application
+The Book Catalog Application is a web-based platform that allows users to explore and manage a catalog of books, organized by categories. It provides user registration, category creation, book management, and order placement features. This repository contains the source code and documentation for the application.
 
-This guide will walk you through the process of setting up a backend boilerplate project with PostgreSQL and Prisma. By following these steps, you will clone the project, install dependencies, and configure Prisma for database management. Let's get started!
+## Live link : [https://book-catalog-postgres-prisma-a8.vercel.app/](https://book-catalog-postgres-prisma-a8.vercel.app/)
 
-## Installation Steps
+## Tech Stack 
+The Book Catalog Application is built using the following technologies:
 
-Follow these steps to set up the backend boilerplate project:
 
-### 1. Clone the Project
+Backend:
+Node.js
+Express.js (API Framework)
+Prisma (Database ORM)
+PostgreSQL (Database)
+JSON Web Tokens (Authentication)
+Bcrypt (Password Hashing)
 
-Open your terminal or command prompt and run the following command to clone the project repository:
+Deployment and Hosting:
+PostgreSQL (Database Hosting)
 
-```bash
-git clone https://github.com/senseix21/Backend-boilerplate-Postgres-Prisma/ your-backend-project
-```
+Version Control:
+Git & GitHub
 
-Navigate into the project directory:
+Development Tools:
+Visual Studio Code,
+Postman (API Testing)
 
-```bash
-cd your-backend-project
-```
+# Application Routes
+## **User**
+- POST: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/auth/signup](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/auth/signup)
+- GET: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users)
+- GET (Single User): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users/b7a8b078-28bb-4190-b85e-30e47ba23160](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users/b7a8b078-28bb-4190-b85e-30e47ba23160)
+- PATCH (Single User): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users/b7a8b078-28bb-4190-b85e-30e47ba23160](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users/b7a8b078-28bb-4190-b85e-30e47ba23160)
+- DELETE (Single User): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users/b7a8b078-28bb-4190-b85e-30e47ba23160](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users/b7a8b078-28bb-4190-b85e-30e47ba23160)
 
-### 2. Install Project Dependencies
+## **Category**
+- POST: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories/create-category](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories/create-category)
+- GET: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories)
+- GET (Single Category): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories/840af225-57ed-4289-9110-fa2ab60ffd0e](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories/840af225-57ed-4289-9110-fa2ab60ffd0e)
+- PATCH (Single Category): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories/840af225-57ed-4289-9110-fa2ab60ffd0e](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories/840af225-57ed-4289-9110-fa2ab60ffd0e)
+- DELETE (Single Category): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories/840af225-57ed-4289-9110-fa2ab60ffd0e](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories/840af225-57ed-4289-9110-fa2ab60ffd0e)
 
-Install the project dependencies by running the following command:
+## **Books**
+- POST: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/create-book](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/create-book)
+- GET: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books)
+- GET (Books by Category): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/:categoryId/category](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/840af225-57ed-4289-9110-fa2ab60ffd0e/category)
+- GET (Single Book): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/fed4fcf2-e840-443c-80dd-303a2bc5328b](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/fed4fcf2-e840-443c-80dd-303a2bc5328b)
+- PATCH (Single Book): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/fed4fcf2-e840-443c-80dd-303a2bc5328b](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/fed4fcf2-e840-443c-80dd-303a2bc5328b)
+- DELETE (Single Book): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/fed4fcf2-e840-443c-80dd-303a2bc5328b](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/fed4fcf2-e840-443c-80dd-303a2bc5328b)
 
-```bash
-yarn install
-```
+## **Orders**
+- POST: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/orders/create-order](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/orders/create-order)
+- GET: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/orders](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/orders)
+- GET (Single Order): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/orders/dd199593-d9ba-4549-a2cc-ba1fcc7dc71c](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/orders/dd199593-d9ba-4549-a2cc-ba1fcc7dc71c)
 
-### 3. Configure Prisma and Database Connection
+## **Profile**
+- GET: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/profile](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/profile)
 
-#### a. Add Prisma as a Development Dependency
-
-Add Prisma as a development dependency by running the following command:
-
-```bash
-yarn add prisma --save-dev
-```
-
-#### b. Set Up Your Prisma Project
-
-Create the Prisma schema file using the following command:
-
-```bash
-npx prisma init
-```
-
-Open the `prisma/schema.prisma` file and configure your database connection details. Modify the `datasource` block to match your database provider and connection URL:
-
-```prisma
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-```
-
-#### c. Create a .env File
-
-Create a `.env` file in the project root directory and set the `DATABASE_URL` environment variable. Replace the placeholders with your database connection details:
-
-```dotenv
-DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=SCHEMA"
-```
-
-### 4. Creating the Database Schema
-
-Migrate the database schema using the following command:
-
-```bash
-npx prisma migrate dev --name init
-```
-
-This command creates a new migration file based on your schema changes and applies it to your database.
-
-### 5. Install Prisma Client
-
-Install the Prisma Client library by running the following command:
-
-```bash
-yarn add @prisma/client
-```
-
-The Prisma Client provides an interface to interact with your database.
-
-That's it! You have successfully set up the Backend Boilerplate project with PostgreSQL and Prisma. You can now start exploring and working with the codebase. Refer to the project documentation or README for further instructions on how to run and use the backend service.
-
-Happy coding!
