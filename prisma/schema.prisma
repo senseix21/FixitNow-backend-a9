@@ -10,20 +10,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role {
-  User
-  Admin
-  SuperAdmin
-}
-
 model User {
-  id          String  @id @default(uuid())
-  email       String  @unique
-  password    String
-  role        Role    @default(User)
-  name        String?
-  contactInfo String?
-  address     String?
+  id             String           @id @default(uuid())
+  email          String           @unique
+  password       String
+  role           Role             @default(USER)
+  name           String?
+  contactInfo    String?
+  address        String?
+  Booking        Booking[]
+  Review         Review[]
+  Content        Content[]
+  Cart           Cart[]
+  Notification   Notification[]
+  ServiceHistory ServiceHistory[]
 
   @@map("users")
 }
@@ -37,13 +37,87 @@ model Category {
 }
 
 model Service {
-  id           String   @id @default(uuid())
-  title        String
-  description  String
-  price        Float
-  categoryId   String
-  category     Category @relation(fields: [categoryId], references: [id])
-  availability String
+  id             String           @id @default(uuid())
+  title          String
+  description    String
+  price          Float
+  categoryId     String
+  category       Category         @relation(fields: [categoryId], references: [id])
+  availability   String
+  Booking        Booking[]
+  Review         Review[]
+  Cart           Cart[]
+  ServiceHistory ServiceHistory[]
 
   @@map("service")
+}
+
+model Cart {
+  id        String   @id @default(uuid())
+  userId    String
+  serviceId String
+  createdAt DateTime @default(now())
+  service   Service  @relation(fields: [serviceId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  content   String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model ServiceHistory {
+  id        String   @id @default(uuid())
+  userId    String
+  serviceId String
+  createdAt DateTime @default(now())
+  service   Service  @relation(fields: [serviceId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Booking {
+  id        String        @id @default(uuid())
+  serviceId String
+  userId    String
+  date      DateTime
+  status    BookingStatus @default(PENDING)
+  service   Service       @relation(fields: [serviceId], references: [id])
+  user      User          @relation(fields: [userId], references: [id])
+  createdAt DateTime      @default(now())
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  serviceId String
+  userId    String
+  rating    Float
+  comment   String
+  service   Service  @relation(fields: [serviceId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Content {
+  id        String   @id @default(uuid())
+  title     String
+  body      String
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+enum Role {
+  USER
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum BookingStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  COMPLETED
 }
