@@ -27,3 +27,23 @@ model User {
 
   @@map("users")
 }
+
+model Category {
+  id      String    @id @default(uuid())
+  name    String
+  service Service[]
+
+  @@map("category")
+}
+
+model Service {
+  id           String   @id @default(uuid())
+  title        String
+  description  String
+  price        Float
+  categoryId   String
+  category     Category @relation(fields: [categoryId], references: [id])
+  availability String
+
+  @@map("service")
+}
