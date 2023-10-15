@@ -12,5 +12,17 @@ async function createServiceHistory(userId: string, serviceId: string): Promise<
     return serviceHistory;
 }
 
-export { createServiceHistory };
+async function getServiceHistoryByUser(userId: string): Promise<ServiceHistory[]> {
+    const serviceHistory = await prisma.serviceHistory.findMany({
+        where: {
+            userId,
+        },
+        include: {
+            service: true,
+        }
+    });
+    return serviceHistory;
+}
+
+export const ServiceHistoryService = { getServiceHistoryByUser, createServiceHistory };
 

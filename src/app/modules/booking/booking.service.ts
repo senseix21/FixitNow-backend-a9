@@ -1,6 +1,6 @@
 import { Booking } from "@prisma/client";
 import { prisma } from "../../../shared/prisma";
-import { createServiceHistory } from "../serviceHistory/serviceHistory.service";
+import { ServiceHistoryService } from "../serviceHistory/serviceHistory.service";
 import { BookingStatus } from "./booking.constants";
 
 const createBooking = async (serviceId: string, userId: string, date: Date): Promise<Booking> => {
@@ -83,7 +83,7 @@ const updateBookingStatus = async (bookingId: string, newStatus: BookingStatus):
     });
     if (newStatus === BookingStatus.COMPLETED || BookingStatus.REJECTED) {
         // If the status is updated to COMPLETED | REJECTED, create a service history record
-        await createServiceHistory(updatedBooking.userId, updatedBooking.serviceId);
+        await ServiceHistoryService.createServiceHistory(updatedBooking.userId, updatedBooking.serviceId);
     }
     return updatedBooking;
 };

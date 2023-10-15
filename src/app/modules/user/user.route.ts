@@ -9,5 +9,9 @@ router.get("/",
     authenticate(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.USER),
     UserController.getProfile);
 
+router.patch('/',
+    authenticate(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.USER),
+    UserController.updateProfile);
+
 
 export const ProfileRoutes = router;

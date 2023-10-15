@@ -21,7 +21,22 @@ const getProfile = catchAsync(async (req, res) => {
         data: profile,
     })
 });
+const updateProfile = catchAsync(async (req, res) => {
+    const accessToken: any = req.headers.authorization;
+    const decodedToken = jwtHelpers.verifyToken(accessToken, config.jwt.secret as Secret);
+    const userId = decodedToken.userId;
+
+    const profile = await UserService.updateProfile(userId, req.body)
+
+    sendResponse(res, {
+        success: true,
+        statusCode: httpStatus.OK,
+        message: "Profile updated successfully!",
+        data: profile,
+    })
+});
 
 export const UserController = {
     getProfile,
+    updateProfile
 }

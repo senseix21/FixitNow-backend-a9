@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { Prisma, User } from "@prisma/client";
 import { prisma } from "../../../shared/prisma";
 
 const getProfile = async (userId: string): Promise<User | null> => {
@@ -18,7 +18,26 @@ const getProfile = async (userId: string): Promise<User | null> => {
     return profile;
 }
 
+const updateProfile = async (userId: string, userData: Prisma.UserUpdateInput): Promise<User | null> => {
+    const updatedProfile = await prisma.user.update({
+        where: {
+            id: userId
+        },
+        data: userData,
+        include: {
+            Booking: true,
+            Cart: true,
+            ServiceHistory: true,
+            Content: true,
+            Notification: true
+        }
+    });
+
+    return updatedProfile;
+}
+
 export const UserService = {
-    getProfile
+    getProfile,
+    updateProfile
 }
 

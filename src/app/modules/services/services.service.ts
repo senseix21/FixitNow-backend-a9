@@ -62,7 +62,8 @@ const getAll = async (filters: any, options: IPaginationOptions): Promise<IGener
         take: size,
         where: whereConditions,
         include: {
-            category: true
+            category: true,
+            Review: true,
         },
         orderBy: options.sortBy && options.sortOrder
             ? {
