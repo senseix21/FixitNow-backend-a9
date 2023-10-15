@@ -152,7 +152,7 @@ const deleteOne = async (id: string) => {
 }
 
 
-export const ServiceService = {
+export const ServicesService = {
     create,
     getAll,
     getSingle,

@@ -1,13 +1,21 @@
 import express from 'express';
 import { AuthRoutes } from '../modules/auth/auth.route';
+import { BookingRoutes } from '../modules/booking/booking.route';
+import { CartRoutes } from '../modules/carts/cart.route';
 import { CategoryRoutes } from '../modules/category/category.route';
+import { ServicesRoutes } from '../modules/services/service.route';
+import { ProfileRoutes } from '../modules/user/user.route';
 
 
 const router = express.Router();
 
 const moduleRoutes = [
     { path: '/auth', route: AuthRoutes },
-    { path: '/category', route: CategoryRoutes }
+    { path: '/category', route: CategoryRoutes },
+    { path: '/services', route: ServicesRoutes },
+    { path: '/cart', route: CartRoutes },
+    { path: '/booking', route: BookingRoutes },
+    { path: '/profile', route: ProfileRoutes },
 
 
 

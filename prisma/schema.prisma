@@ -42,9 +42,9 @@ model Service {
   title          String
   description    String
   price          Float
+  image          String
   categoryId     String
   category       Category         @relation(fields: [categoryId], references: [id])
-  availability   String
   Booking        Booking[]
   Review         Review[]
   Cart           Cart[]
@@ -61,6 +61,7 @@ model Cart {
   service   Service  @relation(fields: [serviceId], references: [id])
   user      User     @relation(fields: [userId], references: [id])
 
+  @@unique([userId, serviceId], name: "UniqueCartItem")
   @@map("cart")
 }
 
@@ -86,14 +87,15 @@ model ServiceHistory {
 }
 
 model Booking {
-  id        String        @id @default(uuid())
-  serviceId String
-  userId    String
-  date      DateTime
-  status    BookingStatus @default(PENDING)
-  service   Service       @relation(fields: [serviceId], references: [id])
-  user      User          @relation(fields: [userId], references: [id])
-  createdAt DateTime      @default(now())
+  id             String        @id @default(uuid())
+  serviceId      String
+  userId         String
+  date           DateTime
+  slotsAvailable Int
+  status         BookingStatus @default(PENDING)
+  service        Service       @relation(fields: [serviceId], references: [id])
+  user           User          @relation(fields: [userId], references: [id])
+  createdAt      DateTime      @default(now())
 
   @@map("booking")
 }
