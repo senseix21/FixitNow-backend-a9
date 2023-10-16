@@ -19,6 +19,8 @@ Welcome to FixItNow, your go-to platform for on-demand home repair and maintenan
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
+- [ApplicationRoutes](#ApplicationRoutes)
+
 
 ## Key Features
 
@@ -108,12 +110,8 @@ This project is licensed under the [MIT License](LICENSE).
 
 We'd like to express our gratitude to the open-source community for their invaluable contributions and inspiration.
 
-Happy fixing with FixItNow!
-```
 
-Feel free to replace placeholders like `link_to_logo.png` with actual links and customize the content to suit your project's specific needs. This README provides an overview of the project, its key features, how to get started, and guidance for users.
-
-# Application Routes
+# ApplicationRoutes
 Certainly, here are the endpoint categories along with demo URLs for each endpoint:
 
 ### Authentication
