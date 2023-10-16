@@ -1,5 +1,7 @@
 import { Booking } from "@prisma/client";
 import { prisma } from "../../../shared/prisma";
+import NotificationType from "../notifications/notification.constants";
+import { NotificationService } from "../notifications/notification.service";
 import { ServiceHistoryService } from "../serviceHistory/serviceHistory.service";
 import { BookingStatus } from "./booking.constants";
 
@@ -85,6 +87,16 @@ const updateBookingStatus = async (bookingId: string, newStatus: BookingStatus):
         // If the status is updated to COMPLETED | REJECTED, create a service history record
         await ServiceHistoryService.createServiceHistory(updatedBooking.userId, updatedBooking.serviceId);
     }
+
+    if (newStatus === BookingStatus.ACCEPTED) {
+        await NotificationService.createNotification(updatedBooking.userId, NotificationType.BOOKING_CONFIRMATION)
+    } else if (newStatus === BookingStatus.COMPLETED) {
+        await NotificationService.createNotification(updatedBooking.userId, NotificationType.BOOKING_COMPLETED)
+    } else if (newStatus === BookingStatus.REJECTED) {
+        await NotificationService.createNotification(updatedBooking.userId, NotificationType.BOOKING_REJECTION)
+    }
+
+
     return updatedBooking;
 };
 
