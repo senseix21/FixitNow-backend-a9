@@ -106,9 +106,7 @@ We welcome contributions! Feel free to open issues, create pull requests, or sug
 
 This project is licensed under the [MIT License](LICENSE).
 
-## Acknowledgments
 
-We'd like to express our gratitude to the open-source community for their invaluable contributions and inspiration.
 
 
 # ApplicationRoutes
