@@ -26,33 +26,106 @@ Visual Studio Code,
 Postman (API Testing)
 
 # Application Routes
-## **User**
-- POST: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/auth/signup](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/auth/signup)
-- GET: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users)
-- GET (Single User): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users/b7a8b078-28bb-4190-b85e-30e47ba23160](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users/b7a8b078-28bb-4190-b85e-30e47ba23160)
-- PATCH (Single User): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users/b7a8b078-28bb-4190-b85e-30e47ba23160](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users/b7a8b078-28bb-4190-b85e-30e47ba23160)
-- DELETE (Single User): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users/b7a8b078-28bb-4190-b85e-30e47ba23160](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/users/b7a8b078-28bb-4190-b85e-30e47ba23160)
+Certainly, here are the endpoint categories along with demo URLs for each endpoint:
 
-## **Category**
-- POST: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories/create-category](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories/create-category)
-- GET: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories)
-- GET (Single Category): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories/840af225-57ed-4289-9110-fa2ab60ffd0e](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories/840af225-57ed-4289-9110-fa2ab60ffd0e)
-- PATCH (Single Category): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories/840af225-57ed-4289-9110-fa2ab60ffd0e](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories/840af225-57ed-4289-9110-fa2ab60ffd0e)
-- DELETE (Single Category): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories/840af225-57ed-4289-9110-fa2ab60ffd0e](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/categories/840af225-57ed-4289-9110-fa2ab60ffd0e)
+### Authentication
+- User Signup: POST `/auth/signup`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/auth/signup`
+- User Sign In: POST `/auth/signin`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/auth/signin`
+- Admin Signup: POST `/admin-signup`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/admin-signup`
+- Admin Sign In: POST `/admin-signin`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/admin-signin`
 
-## **Books**
-- POST: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/create-book](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/create-book)
-- GET: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books)
-- GET (Books by Category): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/:categoryId/category](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/840af225-57ed-4289-9110-fa2ab60ffd0e/category)
-- GET (Single Book): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/fed4fcf2-e840-443c-80dd-303a2bc5328b](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/fed4fcf2-e840-443c-80dd-303a2bc5328b)
-- PATCH (Single Book): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/fed4fcf2-e840-443c-80dd-303a2bc5328b](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/fed4fcf2-e840-443c-80dd-303a2bc5328b)
-- DELETE (Single Book): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/fed4fcf2-e840-443c-80dd-303a2bc5328b](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/books/fed4fcf2-e840-443c-80dd-303a2bc5328b)
+### Services
+- Create a New Service: POST `/services/create-service`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/services/create-service`
+- Get All Services: GET `/services/`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/services/`
+- Get Services by Category: GET `/services/{categoryId}`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/services/{categoryId}`
 
-## **Orders**
-- POST: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/orders/create-order](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/orders/create-order)
-- GET: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/orders](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/orders)
-- GET (Single Order): [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/orders/dd199593-d9ba-4549-a2cc-ba1fcc7dc71c](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/orders/dd199593-d9ba-4549-a2cc-ba1fcc7dc71c)
+### Content
+- Create a New Content: POST `/content`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/content`
+- Get Content by ID: GET `/content/{contentId}`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/content/{contentId}`
+- Update Content by ID: PUT `/content/{contentId}`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/content/{contentId}`
+- Delete Content by ID: DELETE `/content/{contentId}`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/content/{contentId}`
+- Get All Content: GET `/content`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/content`
 
-## **Profile**
-- GET: [https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/profile](https://book-catalog-postgres-prisma-a8.vercel.app/api/v1/profile)
+### User Feedback
+- Create User Feedback: POST `/feedback`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/feedback`
+- Get User Feedback by ID: GET `/feedback/{feedbackId}`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/feedback/{feedbackId}`
+- Update User Feedback by ID: PUT `/feedback/{feedbackId}`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/feedback/{feedbackId}`
+- Delete User Feedback by ID: DELETE `/feedback/{feedbackId}`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/feedback/{feedbackId}`
+- Get All User Feedback: GET `/feedback`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/feedback`
 
+### Notifications
+- Get Notifications: GET `/notify`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/notify`
+- Delete Notification by ID: DELETE `/notify/{notificationId}`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/notify/{notificationId}`
+
+### Booking
+- Create a Booking: POST `/booking`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/booking`
+- Get Bookings by User: GET `/booking`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/booking`
+- Get All Bookings: GET `/booking/all`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/booking/all`
+- Update Booking Status: PATCH `/booking`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/booking`
+
+### Cart
+- Add to Cart: POST `/cart`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/cart`
+- Get Cart Items: GET `/cart`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/cart`
+- Remove from Cart: DELETE `/cart/{id}`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/cart/{id}`
+
+### Categories
+- Create Category: POST `/category/create-category`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/category/create-category`
+- Get All Categories: GET `/category`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/category`
+- Get Category by ID: GET `/category/{id}`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/category/{id}`
+- Update Category by ID: PATCH `/category/{id}`
+  - Demo URL: `https://fixitnow-backend-a9
+
+.vercel.app/api/v1/category/{id}`
+- Delete Category by ID: DELETE `/category/{id}`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/category/{id}`
+
+### Reviews
+- Create a Review: POST `/review`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/review`
+- Get Reviews for a Service: GET `/review/service/{serviceId}`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/review/service/{serviceId}`
+- Update a Review by ID: PUT `/review/{reviewId}`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/review/{reviewId}`
+- Delete a Review by ID: DELETE `/review/{reviewId}`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/review/{reviewId}`
+
+### Service History
+- Get Service History by User: GET `/serviceHistory`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/serviceHistory`
+
+### Profile
+- Get User Profile: GET `/profile`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/profile`
+- Update User Profile: PATCH `/profile`
+  - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/profile`
+
+These are the API endpoints along with their corresponding demo URLs for testing and accessing the API's functionalities.
