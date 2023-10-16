@@ -25,6 +25,7 @@ model User {
   Cart           Cart[]
   Notification   Notification[]
   ServiceHistory ServiceHistory[]
+  UserFeedback   UserFeedback[]
 
   @@map("users")
 }
@@ -117,11 +118,23 @@ model Content {
   id        String   @id @default(uuid())
   title     String
   body      String
+  image     String?
   authorId  String
   author    User     @relation(fields: [authorId], references: [id])
   createdAt DateTime @default(now())
 
   @@map("content")
+}
+
+model UserFeedback {
+  id        String   @id @default(uuid())
+  userId    String
+  subject   String
+  message   String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@map("userFeedback")
 }
 
 enum Role {
