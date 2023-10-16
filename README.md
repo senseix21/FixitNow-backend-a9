@@ -1,7 +1,7 @@
 
 # FixItNow - Your On-Demand Home Repair and Maintenance Solution
 
-![FixItNow Logo](https://i.ibb.co/BjB08qZ/wepik-colorful-hand-drawn-handyman-high-quality-services-facebook-ads-202310160923237965.png)
+![FixItNow Logo](https://i.ibb.co/hcDp3Zn/wepik-colorful-hand-drawn-handyman-high-quality-services-facebook-ads-20231016092604-RQDy.png)
 
 Welcome to FixItNow, your go-to platform for on-demand home repair and maintenance services. With FixItNow, you can quickly and conveniently address all your household repair and maintenance needs. Whether it's a leaky faucet, a faulty electrical socket, or a home improvement project, we've got you covered.
 
