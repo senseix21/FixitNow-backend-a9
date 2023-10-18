@@ -26,7 +26,7 @@ const login = catchAsync(async (req, res) => {
         secure: config.env === "production",
         httpOnly: true,
     }
-    res.cookie("refreshToken", token, cookieOptions);
+    res.cookie("refreshToken", token);
 
     sendLoginResponse(res, {
         success: true,

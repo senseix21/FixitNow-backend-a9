@@ -48,7 +48,7 @@ const login = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, 
         secure: config_1.default.env === "production",
         httpOnly: true,
     };
-    res.cookie("refreshToken", token, cookieOptions);
+    res.cookie("refreshToken", token);
     (0, sendLoginResponse_1.default)(res, {
         success: true,
         statusCode: http_status_1.default.OK,
