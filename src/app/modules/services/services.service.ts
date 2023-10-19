@@ -97,9 +97,12 @@ const getByCategory = async (id: string, options: IPaginationOptions): Promise<I
         where: ({
             categoryId: {
                 equals: id
-            },
-
-        })
+            }
+        }),
+        include: {
+            category: true,
+            Review: true,
+        },
     });
 
     const total = await prisma.service.count({
@@ -126,6 +129,10 @@ const getSingle = async (id: string): Promise<Service | null> => {
     const result = await prisma.service.findUnique({
         where: {
             id: id
+        },
+        include: {
+            category: true,
+            Review: true,
         },
 
     });
