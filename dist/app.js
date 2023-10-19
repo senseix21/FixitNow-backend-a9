@@ -9,7 +9,7 @@ const globalErrorHandler_1 = __importDefault(require("./app/middlewares/globalEr
 const routes_1 = __importDefault(require("./app/routes"));
 const app = (0, express_1.default)();
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: 'https://fixitnow-frontend-a9.vercel.app/',
     credentials: true,
 };
 app.use((0, cors_1.default)(corsOptions));
