@@ -100,8 +100,12 @@ const getByCategory = (id, options) => __awaiter(void 0, void 0, void 0, functio
         where: ({
             categoryId: {
                 equals: id
-            },
-        })
+            }
+        }),
+        include: {
+            category: true,
+            Review: true,
+        },
     });
     const total = yield prisma_1.prisma.service.count({
         where: ({
@@ -124,6 +128,10 @@ const getSingle = (id) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield prisma_1.prisma.service.findUnique({
         where: {
             id: id
+        },
+        include: {
+            category: true,
+            Review: true,
         },
     });
     return result;
