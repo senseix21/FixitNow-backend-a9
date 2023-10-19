@@ -9,10 +9,7 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "dist/server.js",
-            "headers": {
-                "Access-Control-Allow-Origin": "https://fixitnow-frontend-a9.vercel.app"
-            }
+            "dest": "dist/server.js"
         }
     ]
 }
