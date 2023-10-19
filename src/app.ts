@@ -6,7 +6,7 @@ import router from "./app/routes";
 const app: Application = express();
 
 const corsOptions = {
-    origin: 'https://fixitnow-frontend-a9.vercel.app/',
+    origin: 'https://fixitnow-frontend-a9.vercel.app',
     credentials: true,
 };
 
