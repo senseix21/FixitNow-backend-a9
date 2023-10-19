@@ -1,5 +1,4 @@
 import httpStatus from "http-status";
-import config from "../../../config";
 import catchAsync from "../../../shared/catchAsync";
 import sendLoginResponse from "../../../shared/sendLoginResponse";
 import sendResponse from "../../../shared/sendResponse";
@@ -22,10 +21,10 @@ const login = catchAsync(async (req, res) => {
     const { token } = result;
 
     //set refreshToken in cookies
-    const cookieOptions = {
-        secure: config.env === "production",
-        httpOnly: true,
-    }
+    // const cookieOptions = {
+    //     secure: config.env === "production",
+    //     httpOnly: true,
+    // }
     res.cookie("refreshToken", token);
 
     sendLoginResponse(res, {

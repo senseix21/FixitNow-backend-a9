@@ -16,14 +16,13 @@ router.post('/create-Service',
 router.get('/',
     ServicesController.getAll);
 
-router.get('/:categoryId',
-    ServicesController.getByCategory);
-
-router.get('/',
-    ServicesController.getAll);
 
 router.get('/:id',
     ServicesController.getSingle);
+
+router.get('/category/:categoryId',
+    ServicesController.getByCategory);
+
 
 router.patch('/:id',
     authenticate(ENUM_USER_ROLE.ADMIN),
