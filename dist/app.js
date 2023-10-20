@@ -8,8 +8,9 @@ const express_1 = __importDefault(require("express"));
 const globalErrorHandler_1 = __importDefault(require("./app/middlewares/globalErrorHandler"));
 const routes_1 = __importDefault(require("./app/routes"));
 const app = (0, express_1.default)();
+//'https://fixitnow-frontend-a9.vercel.app' || 
 const corsOptions = {
-    origin: 'https://fixitnow-frontend-a9.vercel.app' || 'https://localhost:3000',
+    origin: 'https://localhost:3000',
     credentials: true,
 };
 app.use((0, cors_1.default)(corsOptions));
