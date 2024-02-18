@@ -20,11 +20,7 @@ const login = catchAsync(async (req, res) => {
     const result = await AuthService.login(loginData);
     const { token } = result;
 
-    //set refreshToken in cookies
-    // const cookieOptions = {
-    //     secure: config.env === "production",
-    //     httpOnly: true,
-    // }
+
     res.cookie("refreshToken", token);
 
     sendLoginResponse(res, {

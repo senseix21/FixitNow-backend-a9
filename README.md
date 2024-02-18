@@ -19,8 +19,7 @@ Welcome to FixItNow, your go-to platform for on-demand home repair and maintenan
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
-- [ApplicationRoutes](#ApplicationRoutes)
-
+- [ApplicationRoutes](#applicationroutes)
 
 ## Key Features
 
@@ -50,22 +49,26 @@ To run FixItNow locally, you need to have the following software installed:
 ### Installation
 
 1. Clone this repository.
+
    ```sh
    git clone https://github.com/your-username/FixItNow.git
    ```
 
 2. Install project dependencies.
+
    ```sh
    cd FixItNow
    npm install
    ```
 
 3. Set up your environment variables.
+
    ```sh
    # Create a .env file and add your configuration settings, such as database connection details, API keys, etc.
    ```
 
 4. Run the application.
+
    ```sh
    npm start
    ```
@@ -106,13 +109,12 @@ We welcome contributions! Feel free to open issues, create pull requests, or sug
 
 This project is licensed under the [MIT License](LICENSE).
 
-
-
-
 # ApplicationRoutes
+
 Certainly, here are the endpoint categories along with demo URLs for each endpoint:
 
 ### Authentication
+
 - User Signup: POST `/auth/signup`
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/auth/signup`
 - User Sign In: POST `/auth/signin`
@@ -123,6 +125,7 @@ Certainly, here are the endpoint categories along with demo URLs for each endpoi
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/admin-signin`
 
 ### Services
+
 - Create a New Service: POST `/services/create-service`
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/services/create-service`
 - Get All Services: GET `/services/`
@@ -131,6 +134,7 @@ Certainly, here are the endpoint categories along with demo URLs for each endpoi
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/services/{categoryId}`
 
 ### Content
+
 - Create a New Content: POST `/content`
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/content`
 - Get Content by ID: GET `/content/{contentId}`
@@ -143,6 +147,7 @@ Certainly, here are the endpoint categories along with demo URLs for each endpoi
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/content`
 
 ### User Feedback
+
 - Create User Feedback: POST `/feedback`
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/feedback`
 - Get User Feedback by ID: GET `/feedback/{feedbackId}`
@@ -155,12 +160,14 @@ Certainly, here are the endpoint categories along with demo URLs for each endpoi
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/feedback`
 
 ### Notifications
+
 - Get Notifications: GET `/notify`
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/notify`
 - Delete Notification by ID: DELETE `/notify/{notificationId}`
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/notify/{notificationId}`
 
 ### Booking
+
 - Create a Booking: POST `/booking`
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/booking`
 - Get Bookings by User: GET `/booking`
@@ -171,6 +178,7 @@ Certainly, here are the endpoint categories along with demo URLs for each endpoi
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/booking`
 
 ### Cart
+
 - Add to Cart: POST `/cart`
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/cart`
 - Get Cart Items: GET `/cart`
@@ -179,6 +187,7 @@ Certainly, here are the endpoint categories along with demo URLs for each endpoi
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/cart/{id}`
 
 ### Categories
+
 - Create Category: POST `/category/create-category`
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/category/create-category`
 - Get All Categories: GET `/category`
@@ -186,13 +195,15 @@ Certainly, here are the endpoint categories along with demo URLs for each endpoi
 - Get Category by ID: GET `/category/{id}`
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/category/{id}`
 - Update Category by ID: PATCH `/category/{id}`
-  - Demo URL: `https://fixitnow-backend-a9
+  - Demo URL: `<https://fixitnow-backend-a9>
 
 .vercel.app/api/v1/category/{id}`
+
 - Delete Category by ID: DELETE `/category/{id}`
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/category/{id}`
 
 ### Reviews
+
 - Create a Review: POST `/review`
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/review`
 - Get Reviews for a Service: GET `/review/service/{serviceId}`
@@ -203,10 +214,12 @@ Certainly, here are the endpoint categories along with demo URLs for each endpoi
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/review/{reviewId}`
 
 ### Service History
+
 - Get Service History by User: GET `/serviceHistory`
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/serviceHistory`
 
 ### Profile
+
 - Get User Profile: GET `/profile`
   - Demo URL: `https://fixitnow-backend-a9.vercel.app/api/v1/profile`
 - Update User Profile: PATCH `/profile`

@@ -4,9 +4,9 @@ import globalErrorHandler from "./app/middlewares/globalErrorHandler";
 import router from "./app/routes";
 
 const app: Application = express();
-//'https://fixitnow-frontend-a9.vercel.app' || 'http://localhost:3000',
+//'https://fixitnow-frontend-a9.vercel.app' || 
 const corsOptions = {
-    origin: "https://fixitnow-frontend-a9.vercel.app",
+    origin: 'http://localhost:3000',
     credentials: true,
 };
 
@@ -29,4 +29,5 @@ app.get('/', function (req, res) {
 });
 
 
-export default app;
+
+export default app;  

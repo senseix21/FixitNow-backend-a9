@@ -24,13 +24,7 @@ const updateProfile = async (userId: string, userData: Prisma.UserUpdateInput): 
             id: userId
         },
         data: userData,
-        include: {
-            Booking: true,
-            Cart: true,
-            ServiceHistory: true,
-            Content: true,
-            Notification: true
-        }
+
     });
 
     return updatedProfile;

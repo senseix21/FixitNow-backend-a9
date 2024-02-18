@@ -6,12 +6,12 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id             String           @id @default(uuid())
+  id             String           @id @default(auto()) @map("_id") @db.ObjectId
   email          String           @unique
   password       String
   role           Role             @default(USER)
@@ -31,7 +31,7 @@ model User {
 }
 
 model Category {
-  id      String    @id @default(uuid())
+  id      String    @id @default(auto()) @map("_id") @db.ObjectId
   name    String
   service Service[]
 
@@ -39,12 +39,13 @@ model Category {
 }
 
 model Service {
-  id             String           @id @default(uuid())
+  id             String           @id @default(auto()) @map("_id") @db.ObjectId
   title          String
   description    String
   price          Float
-  image          String
-  categoryId     String
+  image          String[]
+  categoryId     String           @db.ObjectId
+  status         ServiceStatus    @default(AVAILABLE)
   category       Category         @relation(fields: [categoryId], references: [id])
   Booking        Booking[]
   Review         Review[]
@@ -55,9 +56,9 @@ model Service {
 }
 
 model Cart {
-  id        String   @id @default(uuid())
-  userId    String
-  serviceId String
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  serviceId String   @db.ObjectId
   createdAt DateTime @default(now())
   service   Service  @relation(fields: [serviceId], references: [id])
   user      User     @relation(fields: [userId], references: [id])
@@ -67,8 +68,8 @@ model Cart {
 }
 
 model Notification {
-  id        String   @id @default(uuid())
-  userId    String
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
   content   String
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id])
@@ -77,9 +78,9 @@ model Notification {
 }
 
 model ServiceHistory {
-  id        String   @id @default(uuid())
-  userId    String
-  serviceId String
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  serviceId String   @db.ObjectId
   createdAt DateTime @default(now())
   service   Service  @relation(fields: [serviceId], references: [id])
   user      User     @relation(fields: [userId], references: [id])
@@ -88,9 +89,9 @@ model ServiceHistory {
 }
 
 model Booking {
-  id             String        @id @default(uuid())
-  serviceId      String
-  userId         String
+  id             String        @id @default(auto()) @map("_id") @db.ObjectId
+  serviceId      String        @db.ObjectId
+  userId         String        @db.ObjectId
   date           DateTime
   slotsAvailable Int
   status         BookingStatus @default(PENDING)
@@ -102,9 +103,9 @@ model Booking {
 }
 
 model Review {
-  id        String   @id @default(uuid())
-  serviceId String
-  userId    String
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  serviceId String   @db.ObjectId
+  userId    String   @db.ObjectId
   rating    Float
   comment   String
   service   Service  @relation(fields: [serviceId], references: [id])
@@ -115,11 +116,11 @@ model Review {
 }
 
 model Content {
-  id        String   @id @default(uuid())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   title     String
   body      String
   image     String?
-  authorId  String
+  authorId  String   @db.ObjectId
   author    User     @relation(fields: [authorId], references: [id])
   createdAt DateTime @default(now())
 
@@ -127,8 +128,8 @@ model Content {
 }
 
 model UserFeedback {
-  id        String   @id @default(uuid())
-  userId    String
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
   subject   String
   message   String
   createdAt DateTime @default(now())
@@ -141,6 +142,11 @@ enum Role {
   USER
   ADMIN
   SUPER_ADMIN
+}
+
+enum ServiceStatus {
+  AVAILABLE
+  UPCOMMING
 }
 
 enum BookingStatus {

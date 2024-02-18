@@ -1,5 +1,5 @@
 import { Category } from "@prisma/client";
-import { prisma } from "../../../shared/prisma"
+import { prisma } from "../../../shared/prisma";
 
 const create = async (payload: Category): Promise<Category> => {
     const result = await prisma.category.create({
@@ -57,10 +57,11 @@ const deleteOne = async (id: string) => {
 }
 
 
+
 export const CategoryService = {
     create,
     getAll,
     getSingle,
     update,
-    deleteOne
-}
+    deleteOne,
+};

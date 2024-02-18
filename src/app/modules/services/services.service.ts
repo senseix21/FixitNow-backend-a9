@@ -20,6 +20,8 @@ const create = async (payload: Service): Promise<Service> => {
 const getAll = async (filters: any, options: IPaginationOptions): Promise<IGenericResponse<Service[]>> => {
     const { page, size, skip } = paginationHelpers.calculatePagination(options);
     const { search, maxPrice, minPrice, ...filtersData } = filters;
+    const max = parseFloat(maxPrice);
+    const min = parseFloat(minPrice);
     const andConditions = [];
 
 
@@ -48,8 +50,8 @@ const getAll = async (filters: any, options: IPaginationOptions): Promise<IGener
     if (minPrice !== undefined && maxPrice !== undefined) {
         andConditions.push({
             price: {
-                gte: minPrice,
-                lte: maxPrice
+                gte: min,
+                lte: max
             }
         });
     }
