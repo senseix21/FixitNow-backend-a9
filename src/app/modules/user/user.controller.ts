@@ -7,6 +7,20 @@ import sendResponse from "../../../shared/sendResponse";
 import { UserService } from "./user.service";
 
 
+const getAll = catchAsync(async (req, res) => {
+
+
+    const users = await UserService.getAll()
+
+    sendResponse(res, {
+        success: true,
+        statusCode: httpStatus.OK,
+        message: "Users retrieved successfully!",
+        data: users,
+    })
+});
+
+
 const getProfile = catchAsync(async (req, res) => {
     const accessToken: any = req.headers.authorization;
     const decodedToken = jwtHelpers.verifyToken(accessToken, config.jwt.secret as Secret);
@@ -38,5 +52,6 @@ const updateProfile = catchAsync(async (req, res) => {
 
 export const UserController = {
     getProfile,
-    updateProfile
+    updateProfile,
+    getAll
 }
