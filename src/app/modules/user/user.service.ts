@@ -1,6 +1,12 @@
 import { Prisma, User } from "@prisma/client";
 import { prisma } from "../../../shared/prisma";
 
+const getAll = async (): Promise<User[] | null> => {
+    const users = await prisma.user.findMany()
+    return users;;
+};
+
+
 const getProfile = async (userId: string): Promise<User | null> => {
     const profile = await prisma.user.findUnique({
         where: {
@@ -32,6 +38,7 @@ const updateProfile = async (userId: string, userData: Prisma.UserUpdateInput): 
 
 export const UserService = {
     getProfile,
-    updateProfile
+    updateProfile,
+    getAll,
 }
 
