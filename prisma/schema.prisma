@@ -43,7 +43,7 @@ model Service {
   title          String
   description    String
   price          Float
-  image          String[]
+  image          String
   categoryId     String           @db.ObjectId
   status         ServiceStatus    @default(AVAILABLE)
   category       Category         @relation(fields: [categoryId], references: [id])

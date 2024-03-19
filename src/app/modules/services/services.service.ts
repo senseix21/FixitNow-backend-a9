@@ -135,6 +135,7 @@ const getSingle = async (id: string): Promise<Service | null> => {
         include: {
             category: true,
             Review: true,
+
         },
 
     });

@@ -1,8 +1,15 @@
 import { Prisma, User } from "@prisma/client";
+import { ENUM_USER_ROLE } from "../../../enums/user";
 import { prisma } from "../../../shared/prisma";
 
 const getAll = async (): Promise<User[] | null> => {
-    const users = await prisma.user.findMany()
+    const users = await prisma.user.findMany(
+        {
+            where: {
+                role: ENUM_USER_ROLE.USER
+            }
+        }
+    )
     return users;;
 };
 
