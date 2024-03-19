@@ -57,5 +57,5 @@ exports.CategoryService = {
     getAll,
     getSingle,
     update,
-    deleteOne
+    deleteOne,
 };

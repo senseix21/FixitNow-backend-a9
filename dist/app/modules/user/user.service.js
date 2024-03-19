@@ -10,7 +10,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
+const user_1 = require("../../../enums/user");
 const prisma_1 = require("../../../shared/prisma");
+const getAll = () => __awaiter(void 0, void 0, void 0, function* () {
+    const users = yield prisma_1.prisma.user.findMany({
+        where: {
+            role: user_1.ENUM_USER_ROLE.USER
+        }
+    });
+    return users;
+    ;
+});
 const getProfile = (userId) => __awaiter(void 0, void 0, void 0, function* () {
     const profile = yield prisma_1.prisma.user.findUnique({
         where: {
@@ -32,17 +42,11 @@ const updateProfile = (userId, userData) => __awaiter(void 0, void 0, void 0, fu
             id: userId
         },
         data: userData,
-        include: {
-            Booking: true,
-            Cart: true,
-            ServiceHistory: true,
-            Content: true,
-            Notification: true
-        }
     });
     return updatedProfile;
 });
 exports.UserService = {
     getProfile,
-    updateProfile
+    updateProfile,
+    getAll,
 };

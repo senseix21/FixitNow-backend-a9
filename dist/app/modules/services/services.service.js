@@ -36,6 +36,8 @@ const create = (payload) => __awaiter(void 0, void 0, void 0, function* () {
 const getAll = (filters, options) => __awaiter(void 0, void 0, void 0, function* () {
     const { page, size, skip } = paginationHelpers_1.paginationHelpers.calculatePagination(options);
     const { search, maxPrice, minPrice } = filters, filtersData = __rest(filters, ["search", "maxPrice", "minPrice"]);
+    const max = parseFloat(maxPrice);
+    const min = parseFloat(minPrice);
     const andConditions = [];
     if (search) {
         andConditions.push({
@@ -59,8 +61,8 @@ const getAll = (filters, options) => __awaiter(void 0, void 0, void 0, function*
     if (minPrice !== undefined && maxPrice !== undefined) {
         andConditions.push({
             price: {
-                gte: minPrice,
-                lte: maxPrice
+                gte: min,
+                lte: max
             }
         });
     }

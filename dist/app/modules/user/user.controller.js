@@ -19,6 +19,15 @@ const jwthelpers_1 = require("../../../helpers/jwthelpers");
 const catchAsync_1 = __importDefault(require("../../../shared/catchAsync"));
 const sendResponse_1 = __importDefault(require("../../../shared/sendResponse"));
 const user_service_1 = require("./user.service");
+const getAll = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const users = yield user_service_1.UserService.getAll();
+    (0, sendResponse_1.default)(res, {
+        success: true,
+        statusCode: http_status_1.default.OK,
+        message: "Users retrieved successfully!",
+        data: users,
+    });
+}));
 const getProfile = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const accessToken = req.headers.authorization;
     const decodedToken = jwthelpers_1.jwtHelpers.verifyToken(accessToken, config_1.default.jwt.secret);
@@ -45,5 +54,6 @@ const updateProfile = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, 
 }));
 exports.UserController = {
     getProfile,
-    updateProfile
+    updateProfile,
+    getAll
 };
